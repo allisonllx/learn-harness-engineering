@@ -154,6 +154,43 @@ const ruSkillItems = [
   { text: "Обзор скиллов", link: "/ru/skills/" }
 ];
 
+const uzLectureItems = [
+  { text: "Xush kelibsiz", link: "/uz/" },
+  { text: "Kuchli agentlar nega hali ham yiqiladi", link: "/uz/lectures/lecture-01-why-capable-agents-still-fail/" },
+  { text: "Harness aslida nima", link: "/uz/lectures/lecture-02-what-a-harness-actually-is/" },
+  { text: "Repozitoriy nega yagona haqiqat manbai boʻlishi kerak", link: "/uz/lectures/lecture-03-why-the-repository-must-become-the-system-of-record/" },
+  { text: "Bitta katta yoʻriqnoma fayli nega ishlamaydi", link: "/uz/lectures/lecture-04-why-one-giant-instruction-file-fails/" },
+  { text: "Uzoq vazifalar nega kontekstni yoʻqotadi", link: "/uz/lectures/lecture-05-why-long-running-tasks-lose-continuity/" },
+  { text: "Inisializatsiya nega alohida bosqich boʻlishi kerak", link: "/uz/lectures/lecture-06-why-initialization-needs-its-own-phase/" },
+  { text: "Agentlar nega haddan oshib, oxirigacha yetmaydi", link: "/uz/lectures/lecture-07-why-agents-overreach-and-under-finish/" },
+  { text: "Funksiyalar roʻyxati nega harness primitivi", link: "/uz/lectures/lecture-08-why-feature-lists-are-harness-primitives/" },
+  { text: "Agentlar nega vaqtidan oldin gʻalabani eʼlon qiladi", link: "/uz/lectures/lecture-09-why-agents-declare-victory-too-early/" },
+  { text: "End-to-end testlar nega natijani oʻzgartiradi", link: "/uz/lectures/lecture-10-why-end-to-end-testing-changes-results/" },
+  { text: "Kuzatuvchanlik nega harness ichida boʻlishi kerak", link: "/uz/lectures/lecture-11-why-observability-belongs-inside-the-harness/" },
+  { text: "Har bir sessiya nega toza holat qoldirishi kerak", link: "/uz/lectures/lecture-12-why-every-session-must-leave-a-clean-state/" }
+];
+
+const uzProjectItems = [
+  { text: "Xush kelibsiz", link: "/uz/projects/" },
+  { text: "Faqat prompt vs. qoidalar ustuvor", link: "/uz/projects/project-01-baseline-vs-minimal-harness/" },
+  { text: "Agent oʻqiy oladigan ish maydoni", link: "/uz/projects/project-02-agent-readable-workspace/" },
+  { text: "Koʻp sessiyali davomiylik", link: "/uz/projects/project-03-multi-session-continuity/" },
+  { text: "Runtime fikr-mulohaza va skoup nazorati", link: "/uz/projects/project-04-incremental-indexing/" },
+  { text: "Oʻz-oʻzini tekshirish va rollarni ajratish", link: "/uz/projects/project-05-grounded-qa-verification/" },
+  { text: "Toʻliq harness (yakuniy loyiha)", link: "/uz/projects/project-06-runtime-observability-and-debugging/" }
+];
+
+const uzResourceItems = [
+  { text: "Umumiy koʻrinish", link: "/uz/resources/" },
+  { text: "Shablonlar", link: "/uz/resources/templates/" },
+  { text: "Maʼlumotnoma", link: "/uz/resources/reference/" },
+  { text: "Kengaytirilgan paket", link: "/uz/resources/openai-advanced/" }
+];
+
+const uzSkillItems = [
+  { text: "Malakalar umumiy koʻrinishi", link: "/uz/skills/" }
+];
+
 const koLectureItems = [
   { text: "환영합니다", link: "/ko/" },
   { text: "유능한 에이전트가 여전히 실패하는 이유", link: "/ko/lectures/lecture-01-why-capable-agents-still-fail/" },
@@ -365,6 +402,43 @@ export default withMermaid(
           darkModeSwitchLabel: "테마",
           lightModeSwitchTitle: "라이트 모드로 전환",
           darkModeSwitchTitle: "다크 모드로 전환",
+          socialLinks: [{ icon: "github", link: githubRepoTreeLink }]
+        }
+      },
+      uz: {
+        label: "Oʻzbek",
+        lang: "uz",
+        link: "/uz/",
+        themeConfig: {
+          nav: [
+            { text: "Maʼruzalar", link: uzLectureItems[1].link, activeMatch: '^/uz/(lectures/.*)?$' },
+            { text: "Loyihalar", link: uzProjectItems[0].link, activeMatch: '^/uz/projects/' },
+            { text: "Kutubxona", link: "/uz/resources/", activeMatch: '^/uz/resources/' },
+            { text: "Malakalar", link: "/uz/skills/", activeMatch: '^/uz/skills/' },
+            { text: "Harness'ni sinash ↗", link: "https://github.com/walkinglabs/learn-harness-engineering/blob/main/docs/uz/resources/templates/index.md", target: "_blank", rel: "noopener noreferrer" }
+          ],
+          sidebar: {
+            '/uz/projects/': [{ text: "Loyihalar", items: uzProjectItems }],
+            '/uz/resources/': [{ text: "Resurslar kutubxonasi", items: uzResourceItems }],
+            '/uz/skills/': [{ text: "Malakalar", items: uzSkillItems }],
+            '/uz/': [{ text: "Maʼruzalar", items: uzLectureItems }]
+          },
+          outline: {
+            level: [2, 3],
+            label: "Ushbu sahifada"
+          },
+          docFooter: {
+            prev: "Oldingi",
+            next: "Keyingi"
+          },
+          lastUpdated: {
+            text: "Oxirgi yangilanish"
+          },
+          returnToTopLabel: "Yuqoriga qaytish",
+          sidebarMenuLabel: "Menyu",
+          darkModeSwitchLabel: "Mavzu",
+          lightModeSwitchTitle: "Yorugʻ rejimga oʻtish",
+          darkModeSwitchTitle: "Qorongʻi rejimga oʻtish",
           socialLinks: [{ icon: "github", link: githubRepoTreeLink }]
         }
       },
