@@ -68,7 +68,7 @@ Verification commands:
 
 Que falte cualquier subsistema es como que falte un área funcional en la cocina — todavía puedes cocinar, pero siempre será incómodo.
 
-**Cuantificar el valor de los componentes del harness**: Usa "control isométrico del modelo." Mantén el modelo fijo, elimina subsistemas uno a la vez y mide cuál eliminación causa la mayor caída de rendimiento. La mayor caída identifica el componente con mayor contribución marginal en esa tarea, no automáticamente el cuello de botella. Para localizar el cuello de botella, combina el experimento con registros de fallos y atribución: tarea poco clara, contexto insuficiente, entorno no reproducible, falta de feedback de verificación o gestión de estado rota.
+**Cuantificar el valor de los componentes del harness**: Usa una ablación con el mismo modelo fijo. Mantén el modelo fijo, elimina subsistemas uno a la vez y mide cuál eliminación causa la mayor caída de rendimiento. La mayor caída identifica el componente con mayor contribución marginal en esa tarea; no identifica automáticamente el cuello de botella. Una caída casi nula también necesita interpretación: el componente puede ser redundante, estar mal diseñado o simplemente no haber sido ejercitado por esa tarea. Para diagnosticar cuellos de botella, usa primero registros de fallos y atribución, y usa la ablación como evidencia de apoyo: ¿falló por intención de tarea poco clara, contexto insuficiente, entorno no reproducible, falta de feedback de verificación o gestión de estado rota?
 
 ## La historia real de un equipo
 
@@ -89,7 +89,7 @@ Cuatro iteraciones, el modelo no cambió en absoluto, la tasa de éxito pasó de
 - Harness = Instrucciones + Herramientas + Entorno + Estado + Retroalimentación. Cinco subsistemas, como las cinco áreas funcionales de una cocina — todos esenciales.
 - Si no son pesos del modelo, es harness. Tu harness determina cuánta capacidad del modelo se realiza.
 - Entre los cinco subsistemas, el subsistema de retroalimentación suele tener la menor inversión y el mayor retorno. Configura bien tus comandos de verificación primero — la ventana de control de calidad es la mejora más valiosa.
-- Usa "control isométrico del modelo" para cuantificar la contribución marginal de cada subsistema; usa registros de fallos y atribución para localizar el cuello de botella real.
+- Usa ablación con el mismo modelo para cuantificar contribución marginal; usa registros de fallos y atribución, no solo ablación, para localizar el cuello de botella real.
 - El harness se degrada como el código. Audita regularmente, paga la deuda de harness como pagas la deuda técnica.
 
 ## Lecturas adicionales
@@ -104,6 +104,6 @@ Cuatro iteraciones, el modelo no cambió en absoluto, la tasa de éxito pasó de
 
 1. **Auditoría de harness de cinco componentes**: Toma un proyecto donde uses un agente de IA y haz una auditoría completa usando el marco de cinco componentes. Califica cada subsistema del 1 al 5. Encuentra el subsistema con la calificación más baja, dedica 30 minutos a mejorarlo y luego observa el cambio en el rendimiento del agente.
 
-2. **Experimento de control isométrico del modelo**: Elige un modelo y una tarea desafiante. Secuencialmente elimina las instrucciones (borra AGENTS.md), elimina la retroalimentación (no proporciones comandos de verificación), elimina el estado (sin archivos de progreso) — elimina solo uno a la vez y mide la caída de rendimiento. Basándote en los resultados, clasifica la importancia de los subsistemas para tu proyecto.
+2. **Ablación de valor de componentes con el mismo modelo**: Elige un modelo y una tarea desafiante. Secuencialmente elimina instrucciones (borra AGENTS.md), retroalimentación (no proporciones comandos de verificación) y estado (sin archivos de progreso) — elimina solo uno a la vez y mide la caída de rendimiento. Usa los resultados para clasificar el valor marginal de los subsistemas. Si quieres encontrar un cuello de botella, combina ese ranking con registros de fallos y atribución en lugar de tratar la mayor caída como la respuesta por sí sola.
 
 3. **Análisis de affordances**: Encuentra un escenario donde el agente en tu proyecto "quiere hacer algo pero no puede" (por ejemplo, sabe que debería usar consultas parametrizadas pero no conoce los patrones ORM de tu proyecto). Analiza si esto es un Gulf of Execution (no sabe cómo) o un Gulf of Evaluation (no sabe si está bien), y luego diseña una mejora del harness para cerrar esa brecha.

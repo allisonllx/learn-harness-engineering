@@ -68,7 +68,7 @@ Verification commands:
 
 L'absence d'un sous-système est comme l'absence d'une zone fonctionnelle dans la cuisine — vous pouvez toujours cuisiner, mais c'est toujours laborieux.
 
-**Quantifier la valeur des composants du harness** : Utilisez le « contrôle isométrique du modèle ». Gardez le modèle fixe, retirez les sous-systèmes un par un et mesurez quel retrait provoque la plus forte baisse de performance. La plus forte baisse indique le composant à plus forte contribution marginale dans cette tâche, pas automatiquement le goulot d'étranglement. Pour localiser le vrai goulot, combinez cette expérience avec des journaux d'échec et une attribution : tâche floue, contexte insuffisant, environnement non reproductible, feedback de vérification manquant ou gestion d'état rompue.
+**Quantifier la valeur des composants du harness** : Utilisez une ablation à modèle fixe. Gardez le modèle fixe, retirez les sous-systèmes un par un et mesurez quel retrait provoque la plus forte baisse de performance. La plus forte baisse indique le composant à plus forte contribution marginale dans cette tâche ; elle n’identifie pas automatiquement le goulot d’étranglement. Une baisse quasi nulle doit aussi être interprétée : le composant peut être redondant, mal conçu ou simplement non sollicité par cette tâche. Pour diagnostiquer les goulots, utilisez d’abord les journaux d’échec et l’attribution, puis l’ablation comme preuve d’appui : l’échec vient-il d’une intention floue, d’un contexte insuffisant, d’un environnement non reproductible, d’un feedback de vérification manquant ou d’une gestion d’état rompue ?
 
 ## L'histoire vraie d'une équipe
 
@@ -89,7 +89,7 @@ Quatre itérations, le modèle n'a pas du tout changé, le taux de réussite est
 - Harness = Instructions + Outils + Environnement + État + Retour. Cinq sous-systèmes, comme les cinq zones fonctionnelles d'une cuisine — tous essentiels.
 - Si ce ne sont pas les poids du modèle, c'est du harness. Votre harness détermine quelle part de la capacité du modèle est réellement exploitée.
 - Parmi les cinq sous-systèmes, le sous-système de retour offre généralement l'investissement le plus faible et le rendement le plus élevé. Configurez d'abord vos commandes de vérification — la fenêtre de contrôle qualité est l'amélioration la plus rentable.
-- Utilisez le « contrôle isométrique du modèle » pour quantifier la contribution marginale de chaque sous-système ; utilisez les journaux d'échec et l'attribution pour localiser le vrai goulot d'étranglement.
+- Utilisez l’ablation à modèle fixe pour quantifier la contribution marginale ; utilisez les journaux d’échec et l’attribution, pas l’ablation seule, pour localiser le vrai goulot d’étranglement.
 - Le harness se dégrade comme le code. Auditez régulièrement, remboursez la dette de harness comme vous remboursez la dette technique.
 
 ## Pour aller plus loin
@@ -104,6 +104,6 @@ Quatre itérations, le modèle n'a pas du tout changé, le taux de réussite est
 
 1. **Audit harness en cinq tuples** : Prenez un projet où vous utilisez un agent IA et faites un audit complet en utilisant le cadre à cinq tuples. Notez chaque sous-système de 1 à 5. Trouvez le sous-système ayant la note la plus basse, passez 30 minutes à l'améliorer, puis observez le changement de performance de l'agent.
 
-2. **Expérience de contrôle isométrique du modèle** : Choisissez un modèle et une tâche difficile. Retirez séquentiellement les instructions (supprimez AGENTS.md), retirez le retour (ne fournissez pas de commandes de vérification), retirez l'état (pas de fichiers de progression) — ne retirez qu'un seul élément à la fois et mesurez la baisse de performance. En fonction des résultats, classez l'importance des sous-systèmes pour votre projet.
+2. **Ablation de valeur des composants à modèle fixe** : Choisissez un modèle et une tâche difficile. Retirez séquentiellement les instructions (supprimez AGENTS.md), le retour (ne fournissez pas de commandes de vérification) et l’état (pas de fichiers de progression) — ne retirez qu’un seul élément à la fois et mesurez la baisse de performance. Utilisez les résultats pour classer la valeur marginale des sous-systèmes. Si vous voulez trouver un goulot, combinez ce classement avec les journaux d’échec et l’attribution au lieu de traiter la plus forte baisse comme une réponse suffisante.
 
 3. **Analyse des affordances** : Trouvez un scénario où l'agent dans votre projet « veut faire quelque chose mais ne peut pas » (par ex., sait qu'il devrait utiliser des requêtes paramétrées mais ne connaît pas les patterns ORM de votre projet). Analysez s'il s'agit d'un Golfe d'Exécution (ne sait pas comment) ou d'un Golfe d'Évaluation (ne sait pas si c'est correct), puis concevez une amélioration du harness pour combler ce fossé.

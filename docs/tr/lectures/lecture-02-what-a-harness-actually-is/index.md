@@ -68,7 +68,7 @@ Doğrulama komutları:
 
 Herhangi bir alt sistemin eksikliği mutfakta bir işlevsel alanın eksikliği gibidir — yine de yemek yapabilirsiniz, ama her zaman zahmetlidir.
 
-**Harness bileşen değerini ölçme**: "Eşit modelli kontrol" kullanın. Modeli sabit tutun, alt sistemleri tek tek kaldırın ve hangisinin kaldırılmasının en büyük performans düşüşüne neden olduğunu ölçün. En büyük düşüş, o görevde marjinal katkısı en yüksek olan bileşeni belirler — otomatik olarak darboğazı belirlemez. Darboğazı tespit etmek için bu deneyi başarısızlık günlükleri ve atıflarla birleştirin: belirsiz görev, yetersiz bağlam, yeniden üretilemeyen ortam, eksik doğrulama geri bildirimi veya bozuk durum yönetimi.
+**Harness bileşen değerini ölçme**: Modeli sabit tutan bir bileşen çıkarma deneyi kullanın. Modeli sabit tutun, alt sistemleri tek tek kaldırın ve hangisinin kaldırılmasının en büyük performans düşüşüne neden olduğunu ölçün. En büyük düşüş, o görevde marjinal katkısı en yüksek olan bileşeni belirler; darboğazı otomatik olarak belirlemez. Neredeyse sıfır düşüş de yorum gerektirir: bileşen gereksiz olabilir, kötü tasarlanmış olabilir veya bu görev tarafından yeterince tetiklenmemiş olabilir. Darboğazları teşhis etmek için önce başarısızlık günlükleri ve atıfları kullanın, çıkarma deneyini ise destekleyici kanıt olarak ele alın: başarısızlık belirsiz görev niyetinden mi, yetersiz bağlamdan mı, yeniden üretilemeyen ortamdan mı, eksik doğrulama geri bildiriminden mi, yoksa bozuk durum yönetiminden mi kaynaklandı?
 
 ## Bir takımın gerçek hikâyesi
 
@@ -89,7 +89,7 @@ Dört iterasyon, model hiç değişmedi, başarı oranı %20'den neredeyse %100'
 - Harness = Talimatlar + Araçlar + Ortam + Durum + Geri Bildirim. Beş alt sistem, bir mutfağın beş işlevsel alanı gibi — hepsi zorunlu.
 - Eğer model ağırlığı değilse, harness'tır. Harness'ınız model yeteneğinin ne kadarının kullanıldığını belirler.
 - Beş alt sistem arasında geri bildirim alt sistemi genellikle en düşük yatırım ve en yüksek getiriye sahiptir. Önce doğrulama komutlarınızı doğru ayarlayın — kalite kontrol penceresi en değerli yükseltmedir.
-- Her alt sistemin marjinal katkısını ölçmek için "eşit modelli kontrol" kullanın — sezgiyle gitmeyin; gerçek darboğazı bulmak için başarısızlık günlüklerini ve atıflarını kullanın.
+- Marjinal katkıyı ölçmek için sabit modelle bileşen çıkarma deneyi kullanın; gerçek darboğazı bulmak için yalnızca çıkarma deneyine değil, başarısızlık günlüklerine ve atıflara dayanınız.
 - Harness da kod gibi çürür. Düzenli denetim yapın, teknik borç gibi harness borcunu da ödeyin.
 
 ## Daha fazla okuma
@@ -104,6 +104,6 @@ Dört iterasyon, model hiç değişmedi, başarı oranı %20'den neredeyse %100'
 
 1. **Beşli harness denetimi**: AI ajan kullandığınız bir projeyi alın ve beşli çerçeveyi kullanarak eksiksiz bir denetim yapın. Her alt sistemi 1-5 arası puanlayın. En düşük puanlı alt sistemi bulun, geliştirmek için 30 dakika harcayın, ardından ajan performansındaki değişikliği gözlemleyin.
 
-2. **Eşit modelli kontrol deneyi**: Bir model ve zorlu bir görev seçin. Sırayla talimatları kaldırın (AGENTS.md'yi silin), geri bildirimi kaldırın (doğrulama komutları sağlamayın), durumu kaldırın (ilerleme dosyaları yok) — her seferinde yalnızca birini kaldırın ve performans düşüşünü ölçün. Sonuçlara göre projeniz için alt sistem önemini sıralayın.
+2. **Sabit modelle bileşen değeri deneyi**: Bir model ve zorlu bir görev seçin. Sırayla talimatları kaldırın (AGENTS.md'yi silin), geri bildirimi kaldırın (doğrulama komutları sağlamayın), durumu kaldırın (ilerleme dosyaları yok) — her seferinde yalnızca birini kaldırın ve performans düşüşünü ölçün. Sonuçları alt sistemlerin marjinal değerini sıralamak için kullanın. Darboğaz arıyorsanız, en büyük düşüşü tek başına cevap saymak yerine bu sıralamayı başarısızlık günlükleri ve atıflarla birlikte yorumlayın.
 
 3. **Yetenek analizi**: Projenizde ajanın "bir şey yapmak isteyip yapamadığı" bir senaryo bulun (örneğin parametreli sorgular kullanması gerektiğini bilir ama projenizin ORM kalıplarını bilmez). Bunun bir Yürütme Uçurumu mu (nasıl yapılacağını bilmiyor) yoksa Değerlendirme Uçurumu mu (doğru olup olmadığını bilmiyor) olduğunu analiz edin, ardından köprü kuracak bir harness iyileştirmesi tasarlayın.

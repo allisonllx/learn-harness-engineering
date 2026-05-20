@@ -68,7 +68,7 @@ Verification commands:
 
 Missing any subsystem is like missing a functional area in the kitchen — you can still cook, but it's always awkward.
 
-**Quantifying harness component value**: Use "isometric model control." Keep the model fixed, remove subsystems one at a time, and measure which removal causes the biggest performance drop. The largest drop identifies the component with the highest marginal contribution in that task, not automatically the bottleneck. To locate the bottleneck, combine this experiment with failure logs and attribution: unclear task, insufficient context, unreproducible environment, missing verification feedback, or broken state management.
+**Quantifying harness component value**: Use an "isometric model control" ablation. Keep the model fixed, remove subsystems one at a time, and measure which removal causes the biggest performance drop. The largest drop identifies the component with the highest marginal contribution in that task; it does not automatically identify the bottleneck. A near-zero drop also needs interpretation: the component may be redundant, poorly designed, or simply not exercised by that task. To diagnose bottlenecks, use failure logs and attribution first, then use ablation as supporting evidence: was the failure caused by unclear task intent, insufficient context, unreproducible environment, missing verification feedback, or broken state management?
 
 ## A Team's Real Story
 
@@ -89,7 +89,7 @@ Four iterations, the model didn't change at all, success rate went from 20% to n
 - Harness = Instructions + Tools + Environment + State + Feedback. Five subsystems, like a kitchen's five functional areas — all essential.
 - If it's not model weights, it's harness. Your harness determines how much model capability gets realized.
 - Among the five subsystems, the feedback subsystem usually has the lowest investment and highest return. Get your verification commands right first — the quality check window is the most worthwhile upgrade.
-- Use "isometric model control" to quantify each subsystem's marginal contribution — don't go by gut feeling; use failure logs and attribution to locate the real bottleneck.
+- Use "isometric model control" to quantify marginal contribution; use failure logs and attribution, not ablation alone, to locate the real bottleneck.
 - Harness rots like code does. Audit regularly, pay down harness debt like you pay down technical debt.
 
 ## Further Reading
@@ -104,6 +104,6 @@ Four iterations, the model didn't change at all, success rate went from 20% to n
 
 1. **Five-tuple harness audit**: Take a project where you use an AI agent and do a complete audit using the five-tuple framework. Score each subsystem 1-5. Find the lowest-scoring subsystem, spend 30 minutes improving it, then observe the change in agent performance.
 
-2. **Isometric model control experiment**: Pick one model and one challenging task. Sequentially remove instructions (delete AGENTS.md), remove feedback (don't provide verification commands), remove state (no progress files) — remove only one at a time and measure the performance drop. Based on results, rank subsystem importance for your project.
+2. **Component-value ablation under the same model**: Pick one model and one challenging task. Sequentially remove instructions (delete AGENTS.md), remove feedback (don't provide verification commands), remove state (no progress files) — remove only one at a time and measure the performance drop. Use the results to rank subsystem marginal value. If you want to find a bottleneck, pair the ranking with failure logs and attribution instead of treating the largest drop as the answer by itself.
 
 3. **Affordance analysis**: Find a scenario where the agent in your project "wants to do something but can't" (e.g., knows it should use parameterized queries but doesn't know your project's ORM patterns). Analyze whether this is a Gulf of Execution (doesn't know how) or Gulf of Evaluation (doesn't know if it's right), then design a harness improvement to bridge it.

@@ -68,7 +68,7 @@ Verification commands:
 
 Wenn ein Subsystem fehlt, ist das wie ein fehlender Funktionsbereich in der Küche — Sie können immer noch kochen, aber es ist immer umständlich.
 
-**Wert von harness-Komponenten quantifizieren**: Verwenden Sie „isometrische Modellkontrolle". Halten Sie das Modell fest, entfernen Sie Subsysteme einzeln und messen Sie, welche Entfernung den größten Leistungsabfall verursacht. Der größte Abfall zeigt die Komponente mit dem höchsten Grenzbeitrag in dieser Aufgabe, nicht automatisch den Engpass. Um den Engpass zu finden, kombinieren Sie das Experiment mit Fehlerprotokollen und Attribution: unklare Aufgabe, zu wenig Kontext, nicht reproduzierbare Umgebung, fehlendes Verifikationsfeedback oder gebrochene Zustandsverwaltung.
+**Wert von harness-Komponenten quantifizieren**: Verwenden Sie eine Ablation mit fester Modellkontrolle. Halten Sie das Modell fest, entfernen Sie Subsysteme einzeln und messen Sie, welche Entfernung den größten Leistungsabfall verursacht. Der größte Abfall zeigt die Komponente mit dem höchsten Grenzbeitrag in dieser Aufgabe; er identifiziert nicht automatisch den Engpass. Auch ein nahezu ausbleibender Abfall braucht Interpretation: Die Komponente kann redundant, schlecht entworfen oder durch diese Aufgabe schlicht nicht ausgelöst worden sein. Um Engpässe zu diagnostizieren, nutzen Sie zuerst Fehlerprotokolle und Attribution und verwenden Ablation nur als unterstützende Evidenz: War die Ursache eine unklare Aufgabe, zu wenig Kontext, eine nicht reproduzierbare Umgebung, fehlendes Verifikationsfeedback oder gebrochene Zustandsverwaltung?
 
 ## Die wahre Geschichte eines Teams
 
@@ -89,7 +89,7 @@ Vier Iterationen, das Modell hat sich gar nicht geändert, die Erfolgsquote stie
 - Harness = Instructions + Tools + Environment + State + Feedback. Fünf Subsysteme, wie die fünf Funktionsbereiche einer Küche — alle unverzichtbar.
 - Wenn es keine Modellgewichte sind, ist es harness. Ihr harness bestimmt, wie viel der Modelfähigkeiten realisiert wird.
 - Unter den fünf Subsystemen hat das Feedback-Subsystem normalerweise die geringste Investition und die höchste Rendite. Bringen Sie zuerst Ihre Verifizierungsbefehle in Ordnung — das Qualitätskontrollfenster ist das lohnendste Upgrade.
-- Verwenden Sie „isometrische Modellkontrolle", um den Grenzbeitrag jedes Subsystems zu quantifizieren; nutzen Sie Fehlerprotokolle und Attribution, um den echten Engpass zu finden.
+- Verwenden Sie Ablation mit festem Modell, um Grenzbeiträge zu quantifizieren; nutzen Sie Fehlerprotokolle und Attribution, nicht Ablation allein, um den echten Engpass zu finden.
 - Harness verrottet wie Code. Überprüfen Sie regelmäßig und tilgen Sie harness-Schulden wie Sie technische Schulden tilgen.
 
 ## Weiterführende Literatur
@@ -104,6 +104,6 @@ Vier Iterationen, das Modell hat sich gar nicht geändert, die Erfolgsquote stie
 
 1. **Fünftupel-harness-Audit**: Nehmen Sie ein Projekt, in dem Sie einen KI-Agenten verwenden, und führen Sie ein vollständiges Audit mit dem Fünftupel-Framework durch. Bewerten Sie jedes Subsystem mit 1–5. Finden Sie das am niedrigsten bewertete Subsystem, investieren Sie 30 Minuten in die Verbesserung und beobachten Sie die Veränderung der Agentenleistung.
 
-2. **Isometrisches Modellkontrollexperiment**: Wählen Sie ein Modell und eine anspruchsvolle Aufgabe. Entfernen Sie nacheinander Instruktionen (AGENTS.md löschen), Feedback entfernen (keine Verifizierungsbefehle angeben), Zustand entfernen (keine Fortschrittsdateien) — entfernen Sie jeweils nur eines und messen Sie den Leistungsabfall. Ordnen Sie basierend auf den Ergebnissen die Subsystem-Wichtigkeit für Ihr Projekt.
+2. **Komponentenwert-Ablation bei festem Modell**: Wählen Sie ein Modell und eine anspruchsvolle Aufgabe. Entfernen Sie nacheinander Instruktionen (AGENTS.md löschen), Feedback (keine Verifizierungsbefehle angeben) und Zustand (keine Fortschrittsdateien) — entfernen Sie jeweils nur eines und messen Sie den Leistungsabfall. Nutzen Sie die Ergebnisse, um den Grenzwert der Subsysteme zu ordnen. Wenn Sie einen Engpass finden wollen, kombinieren Sie die Rangliste mit Fehlerprotokollen und Attribution, statt den größten Abfall allein als Antwort zu behandeln.
 
 3. **Affordanz-Analyse**: Finden Sie ein Szenario, in dem der Agent in Ihrem Projekt „etwas tun möchte, aber nicht kann" (z. B. weiß, dass er parametrisierte Abfragen verwenden sollte, aber die ORM-Muster Ihres Projekts nicht kennt). Analysieren Sie, ob dies eine Gulf of Execution (weiß nicht wie) oder Gulf of Evaluation (weiß nicht, ob es richtig ist) ist, und entwerfen Sie dann eine harness-Verbesserung, um die Lücke zu schließen.

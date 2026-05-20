@@ -68,7 +68,7 @@ Tekshiruv buyruqlari:
 
 Qandaydir bir quyi tizimning yoʻqligi, xuddi oshxonada qaysidir funksional hududning yoʻqligiga oʻxshaydi — siz hali ham ovqat pishirishingiz mumkin, lekin bu doim noqulay boʻladi.
 
-**Harness komponentlari qiymatini oʻlchash**: **Izometrik model boshqaruvi** (modelni oʻzgarmas saqlab, harness komponentlarini birma-bir olib tashlab tekshirish usuli)dan foydalaning. Modelni oʻzgarishsiz qoldiring, quyi tizimlarni birma-bir olib tashlang va qaysi birining olib tashlanishi unumdorlikning eng katta pasayishiga olib kelishini oʻlchang. Eng katta pasayish shu vazifada chegaraviy hissasi eng yuqori komponentni koʻrsatadi, lekin bu avtomatik ravishda toʻsiq nuqtasi degani emas. Haqiqiy toʻsiqni topish uchun tajribani muvaffaqiyatsizlik jurnallari va sababga bogʻlash bilan birlashtiring: vazifa noaniqmi, kontekst yetishmayaptimi, muhit qayta tiklanmayaptimi, tekshiruv qayta aloqasi yoʻqmi yoki holat boshqaruvi uzilganmi.
+**Harness komponentlari qiymatini oʻlchash**: modelni oʻzgarmas saqlagan holda komponentlarni olib tashlash tajribasidan foydalaning. Modelni oʻzgarmas qoldiring, quyi tizimlarni birma-bir olib tashlang va qaysi birining olib tashlanishi unumdorlikning eng katta pasayishiga olib kelishini oʻlchang. Eng katta pasayish shu vazifada chegaraviy hissasi eng yuqori komponentni koʻrsatadi; bu avtomatik ravishda haqiqiy toʻsiqni anglatmaydi. Deyarli nol pasayish ham izoh talab qiladi: komponent ortiqcha boʻlishi, yomon loyihalangan boʻlishi yoki bu vazifada yetarli darajada ishga tushmagan boʻlishi mumkin. Toʻsiqni tashxislash uchun avval muvaffaqiyatsizlik jurnallari va sababga bogʻlashdan foydalaning, olib tashlash tajribasini esa yordamchi dalil sifatida talqin qiling: muvaffaqiyatsizlik noaniq vazifa niyati, yetishmagan kontekst, qayta tiklanmaydigan muhit, tekshiruv qayta aloqasi yoʻqligi yoki uzilgan holat boshqaruvi sabablimi?
 
 ## Jamoaning hayotiy misoli
 
@@ -89,7 +89,7 @@ Toʻrtta iteratsiya, model umuman oʻzgarmadi, muvaffaqiyat koʻrsatkichi 20% da
 - Harness = Yoʻriqnomalar + Vositalar + Muhit + Holat + Qayta aloqa. Beshta quyi tizim, xuddi oshxonaning beshta funksional hududiga oʻxshab — barchasi zarur.
 - Agar bu model ogʻirliklari boʻlmasa, bu harness. Sizning harnessʼingiz model imkoniyatlarining qanchalik roʻyobga chiqishini belgilaydi.
 - Beshta quyi tizim ichida qayta aloqa quyi tizimi odatda eng kam xarajat va eng yuqori daromadga (ROI) ega. Avval tekshiruv buyruqlaringizni toʻgʻri sozlang — sifat nazorati oynasi eng munosib yangilanishdir.
-- Har bir quyi tizimning chegaraviy hissasini oʻlchash uchun **izometrik model boshqaruvi**dan foydalaning; haqiqiy toʻsiqni topish uchun muvaffaqiyatsizlik jurnallari va sababga bogʻlashdan foydalaning.
+- Chegaraviy hissani oʻlchash uchun modelni oʻzgarmas saqlagan komponentlarni olib tashlash tajribasidan foydalaning; haqiqiy toʻsiqni topish uchun faqat shu tajribaga emas, muvaffaqiyatsizlik jurnallari va sababga bogʻlashga tayaning.
 - Harness xuddi kod kabi eskiradi. Uni muntazam tekshirib turing, texnik qarzni toʻlaganingiz kabi harness qarzini ham toʻlab boring.
 
 ## Qoʻshimcha oʻqish uchun
@@ -104,6 +104,6 @@ Toʻrtta iteratsiya, model umuman oʻzgarmadi, muvaffaqiyat koʻrsatkichi 20% da
 
 1. **Beshta quyi tizimli harness auditi**: Siz AI agentʼidan foydalanadigan bitta loyihani oling va beshta quyi tizimli freymvorkdan foydalanib toʻliq audit qiling. Har bir quyi tizimni 1 dan 5 gacha baholang. Eng past baholangan quyi tizimni toping, uni yaxshilashga 30 daqiqa sarflang, soʻngra agent unumdorligidagi oʻzgarishni kuzating.
 
-2. **Izometrik model boshqaruvi tajribasi**: Bitta model va bitta murakkab vazifani tanlang. Ketma-ket yoʻriqnomalarni olib tashlang (`AGENTS.md` ni oʻchiring), qayta aloqani olib tashlang (tekshiruv buyruqlarini bermang), holatni olib tashlang (jarayon fayllari yoʻq) — faqat bittasini olib tashlang va unumdorlikning qanchalik tushishini oʻlchang. Natijalarga asoslanib, loyihangiz uchun quyi tizimlarni muhimlik darajasiga koʻra tartiblang.
+2. **Oʻzgarmas modelda komponent qiymati tajribasi**: Bitta model va bitta murakkab vazifani tanlang. Ketma-ket yoʻriqnomalarni olib tashlang (`AGENTS.md` ni oʻchiring), qayta aloqani olib tashlang (tekshiruv buyruqlarini bermang), holatni olib tashlang (jarayon fayllari yoʻq) — har safar faqat bittasini olib tashlang va unumdorlik pasayishini oʻlchang. Natijalar asosida quyi tizimlarning chegaraviy qiymatini tartiblang. Agar toʻsiqni topmoqchi boʻlsangiz, eng katta pasayishni yakka javob deb qabul qilmasdan, bu tartibni muvaffaqiyatsizlik jurnallari va sababga bogʻlash bilan birga talqin qiling.
 
 3. **Imkoniyatlar tahlili (Affordance analysis)**: Loyihangizdagi agent “nimadir qilishni xohlaydigan, lekin qila olmaydigan” vaziyatni toping (masalan, parametrlangan (parameterized) soʻrovlardan foydalanish kerakligini biladi, lekin loyihangizning ORM andozalarini (patterns) bilmaydi). Bu bajarish boʻshligʻi (Gulf of Execution — qanday qilishni bilmaydi) yoki baholash boʻshligʻi (Gulf of Evaluation — toʻgʻri yoki yoʻqligini bilmaydi) ekanligini tahlil qiling, soʻngra uni toʻldirish uchun harnessʼni yaxshilash rejasini tuzing.
