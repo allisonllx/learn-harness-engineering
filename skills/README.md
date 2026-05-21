@@ -9,6 +9,7 @@
   <a href="README-AR.md"><img alt="العربية" src="https://img.shields.io/badge/العربية-d9d9d9"></a>
   <a href="README-VI.md"><img alt="Tiếng_Việt" src="https://img.shields.io/badge/Tiếng_Việt-d9d9d9"></a>
   <a href="README-DE.md"><img alt="Deutsch" src="https://img.shields.io/badge/Deutsch-d9d9d9"></a>
+  <a href="README-TR.md"><img alt="Türkçe" src="https://img.shields.io/badge/Türkçe-d9d9d9"></a>
 </p>
 
 # Skills
@@ -48,6 +49,7 @@ skills/
 ├── README-AR.md                 # Arabic version
 ├── README-VI.md                 # Vietnamese version
 ├── README-DE.md                 # German version
+├── README-TR.md                 # Turkish version
 └── harness-creator/             # Harness engineering skill
     ├── SKILL.md                 # Main skill definition
     ├── SKILL.md.en              # English-only version
